@@ -1,0 +1,24 @@
+<div class="top-hero-wrapper">
+  <div class="bg-mask">
+    <div class="container content-container">
+      <div class="row">
+        <div class="col-md-offset-2 col-md-8">
+          <h1 class="text-center text-white">依頼を受ける</h1>
+          <%= form_for @topic do |f| %>
+            <div class="form-group text-white">
+              <%= f.label :image %>
+              <%= f.file_field :image %>
+            </div>
+
+            <div class="form-group text-white">
+              <%= f.label :description %>
+              <%= f.text_area :description, class: 'form-control' %>
+            </div>
+
+            <%= f.submit '投稿', class: 'btn btn-white btn-block' %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,43 @@
+<div class="messsage row">
+
+  <% if message.teacher %> <!-- ティーチャーのメッセージは左 (messageのteacherカラムがtrueかfalseか)-->
+
+      <% if logged_in_teacher? %> <!--ティーチャーでログインしていたら、ティーチャーのメッセージは緑になる -->
+        <div class="chat_message panel-green">
+          <p class="auto-br" style="font-size: 20px;color: #000;"><%= message.content %></p>
+        </div>
+
+      <% elsif logged_in_user? %> <!-- ユーザーなら白 -->
+        <div class="panel chat_message">
+          <p class="auto-br" style="font-size: 20px;color: #000;"><%= message.content %></p>
+        </div>
+
+      <% else %> <!-- 最初は必ず緑（上２つは必ずfalseになるから） -->
+        <div class="chat_message panel-green">
+          <p class="auto-br" style="font-size: 20px;color: #000;"><%= message.content %></p>
+        </div>
+
+      <% end %>
+
+  <% else %> <!-- ユーザーのメッセージは右 -->
+
+      <% if logged_in_user? %> <!--ユーザーでログインしていたら、ユーザーのメッセージは緑になる -->
+        <div class="col-md-offset-7 chat_message panel-green" style='float: right;'>
+          <p class="auto-br" style="font-size: 20px;color: #000;"><%= message.content %></p>
+        </div>
+
+      <% elsif logged_in_teacher? %> <!-- ティーチャーなら白 -->
+        <div class="col-md-offset-7 panel chat_message" style='float: right;'>
+          <p class="auto-br" style="font-size: 20px;color: #000;"><%= message.content %></p>
+        </div>
+
+      <% else %> <!-- 最初は必ず緑（上２つは必ずfalseになるから） -->
+        <div class="col-md-offset-7 chat_message panel-green" style='float: right;'>
+          <p class="auto-br" style="font-size: 20px;color: #000;"><%= message.content %></p>
+        </div>
+
+      <% end %>
+
+  <% end %>
+
+</div>

@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>HairMore</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
+
+  </head>
+
+  <body>
+
+    <% flash.each do |key,value| %>
+      <div class="alert alert-<%= key %>" role="alert">
+        <%= value %>
+      </div>
+    <% end %>
+
+    <nav class="navbar navbar-inverse navbar-fixed-top navbar-transparent">
+      <div class="container">
+        <% if logged_in_user? || logged_in_teacher? %> <!-- ログインしていたらtop_pathへリンク -->
+
+          <%= link_to top_path do %>
+            <div class="header-icon navbar-brand">
+              <p class="icon-text-big">Hair</p>
+              <p class="icon-text-big">&nbsp;More</p>
+            </div>
+          <% end %>
+
+        <% else %> <!-- ログインしていなければroot_pathへリンク -->
+
+          <%= link_to root_path do %>
+            <div class="header-icon navbar-brand">
+              <p class="icon-text-big">Hair</p>
+              <p class="icon-text-big">&nbsp;More</p>
+            </div>
+          <% end %>
+
+        <% end %>
+
+        <ul class="nav navbar-nav navbar-right">
+          <% if logged_in_user? || logged_in_teacher? %>
+
+            <% if logged_in_user? %>
+
+              <li>
+                <%= link_to user_path(id: current_user.id) do %>
+                  <div class="header-icon navbar-brand">
+                    <figure class="text-center" style="position: relative; top: -8px; left: -8px">
+                      <%= image_tag current_user.image.url, :size => '45x45', class: "img-circle" %>
+                      <p style="font-size: 5px; padding-top: 3px"><%= current_user.name %></p>
+                    </figure>
+                  </div>
+                <% end %>
+              </li>
+
+            <% elsif logged_in_teacher? %>
+
+              <li>
+                <%= link_to teacher_path(id: current_teacher.id) do %>
+                  <div class="header-icon navbar-brand">
+                    <figure class="text-center" style="position: relative; top: -8px; left: -8px">
+                      <%= image_tag current_teacher.image.url, :size => '45x45', class: "img-circle" %>
+                      <p style="font-size: 5px; padding-top: 3px"><%= current_teacher.name %></p>
+                    </figure>
+                  </div>
+                <% end %>
+              </li>
+
+            <% end %>
+
+          <% if logged_in_user? %>
+
+            <li>
+              <%= link_to likes_path do %>
+                <div class="header-icon navbar-brand">
+                  <p class="icon-text">Like</p>
+                </div>
+              <% end %>
+            </li>
+
+          <% end %>
+
+            <li>
+              <%= link_to chats_path do %>
+                <div class="header-icon navbar-brand">
+                  <p class="icon-text">Chat</p>
+                  <div class="notice-circle" id="new_messages"></div>　<!-- 新しいメッセージがあったら表示する -->
+                </div>
+              <% end %>
+            </li>
+
+            <li>
+              <%= link_to topics_path do %>
+                <div class="header-icon navbar-brand">
+                  <p class="icon-text">Topics</p>
+                </div>
+              <% end %>
+            </li>
+
+            <li>
+              <a href='mailto:default&#64;default.test.com?subject=お問い合わせ&amp;body=メールアドレスの記入もお忘れなきようにお願いします'>
+                <div class="header-icon navbar-brand">
+                  <p class="icon-text">Contact</p>
+                </div>
+              </a>
+            </li>
+
+            <li>
+              <%= link_to logout_path, method: 'delete' do %>
+                <div class="header-icon navbar-brand">
+                  <p class="icon-text">Log out</p>
+                </div>
+              <% end %>
+            </li>
+
+          <% else %>
+
+            <li>
+              <%= link_to topics_path do %>
+                <div class="header-icon navbar-brand">
+                  <p class="icon-text">Topics</p>
+                </div>
+              <% end %>
+            </li>
+
+            <li>
+              <a href='mailto:default&#64;default.test.com?subject=お問い合わせ&amp;body=メールアドレスの記入を記入してこちらにお問い合わせ内容を記入してください'>
+                <div class="header-icon navbar-brand">
+                  <p class="icon-text">Contact</p>
+                </div>
+              </a>
+            </li>
+
+            <li>
+              <%= link_to login_index_path do %>
+                <div class="header-icon navbar-brand">
+                  <p class="icon-text">Log in</p>
+                </div>
+              <% end %>
+            </li>
+
+          <% end %>
+        </ul>
+      </div>
+    </nav>
+
+    <%= yield %>
+
+    <script>
+      $(function(){
+        $(".alert").fadeOut(5000);
+      });
+    </script>
+
+    <% if logged_in_user? || logged_in_teacher? %>
+      <script>
+        if (<%= check_unlook_messages %>) {
+          $('#new_messages').css('display', 'block');
+        } else {
+          $('#new_messages').css('display', 'none');
+        }
+        </script>
+      <% end %>
+
+
+  </body>
+</html>

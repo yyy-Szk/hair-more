@@ -1,0 +1,36 @@
+<div class="top-hero-wrapper">
+  <div class="bg-mask">
+    <div class="container content-container">
+      <div class="row">
+        <div class="col-md-offset-2 col-md-8">
+          <h1 class="text-center text-pink">Sign up</h1>
+          <%= form_for @user do |f| %>
+            <div class="form-group">
+              <%= f.label :name, class: 'text-white' %>
+              <%= f.text_field :name, class: 'form-control' %>
+            </div>
+            <div class="form-group">
+              <%= f.label :email, class: 'text-white' %>
+              <%= f.text_field :email, class: 'form-control' %>
+            </div>
+            <div class="form-group">
+              <%= f.label :password, class: 'text-white' %>
+              <%= f.password_field :password, class: 'form-control' %>
+            </div>
+            <div class="form-group">
+              <%= f.label :password_confirmation, class: 'text-white' %>
+              <%= f.password_field :password_confirmation, class: 'form-control' %>
+            </div>
+            <div class="form-group text-white">
+              <%= f.label :image %>
+              <%= f.file_field :image %>
+            </div>
+
+            <%= f.submit "登録", class: 'btn-block btn-white' %>
+          <% end %>
+          <%= link_to 'ログインはこちら', user_login_path,class: 'text-white' %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

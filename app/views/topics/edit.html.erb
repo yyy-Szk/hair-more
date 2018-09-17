@@ -1,0 +1,24 @@
+<div class="top-hero-wrapper">
+  <div class="bg-mask">
+    <div class="container content-container">
+      <div class="row">
+        <div class="col-md-offset-2 col-md-8">
+          <h1 class="text-center text-cyan">投稿詳細の編集</h1>
+          <%= form_for @topic do |f| %>
+            <div class="form-group">
+              <%= f.label :description, class: 'text-white' %>
+              <%= f.text_area :description, class: 'form-control' %>
+            </div>
+            <div class="form-group text-white">
+              <%= f.label :image %>
+              <%= f.file_field :image %>
+            </div>
+              <%= hidden_field_tag :id, @topic.id %>
+
+            <%= f.submit "更新する", class: 'btn-block btn-white' %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

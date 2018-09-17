@@ -1,0 +1,48 @@
+<div class="top-hero-wrapper-p">
+  <div class="bg-mask">
+    <div class="container content-container">
+      <div class="row">
+        <h1 class="text-center text-white">チャットルーム</h1>
+        <div class="col-md-offset-2 col-md-8" style="padding: 100px 0 380px">
+
+          <div id="message">
+            <%= render @messages %>
+          </div>
+
+          <form style='text-align: center; font-size: 20px; margin-top: 60px'>
+            <label class="text-white">発言する:</label><br>
+            <input type="text" data-behavior="chat_speaker">
+            <input type="hidden" data-behavior="chat_room" value='<%= params[:id] %>'>
+            <input type="hidden" data-behavior="chat_read" value="false">
+
+            <% if logged_in_user? && !logged_in_teacher? %>
+              <input type="hidden" data-behavior="chat_sender" value="<%= current_user.id %>">
+              <input type="hidden" data-behavior="chat_teacher" value="false">
+            <% elsif logged_in_teacher? && !logged_in_user? %>
+              <input type="hidden" data-behavior="chat_sender" value="<%= current_teacher.id %>">
+              <input type="hidden" data-behavior="chat_teacher" value="true">
+            <% end %>
+          </form>
+
+        </div>
+      </div>
+
+      <% if logged_in_user? %>
+        <div class="row">
+          <div class="col-md-offset-3 col-md-6 text-center">
+
+            <%= link_to new_review_path(teacher_id: params[:id]) do %>
+              <div class="text-center btn-white" style='margin-bottom: 80px'>
+                <p style="font-size: 40px">依頼を完了する</p>
+              </div>
+            <% end %>
+
+          </div>
+        </div>
+      <% end %>
+
+    </div>
+  </div>
+</div>
+
+<% console %>

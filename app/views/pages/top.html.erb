@@ -1,0 +1,84 @@
+<div class="top-hero-wrapper">
+  <div class="bg-mask">
+    <div class="container content-container">
+
+      <div class="row text-white" style="margin-bottom: 100px">
+        <div class="col-md-12 text-center">
+          <h1 style="font-size: 100px">Hair More</h1>
+          <h3>~ 髪の悩みは美容師に相談しよう ~</h3>
+        </div>
+      </div>
+
+      <h1 class="text-white text-center" style="margin-bottom: 60px">How to use?</h1>
+
+      <% if logged_in_user? %> <!-- ユーザーの場合の表示 -->
+
+        <div class="row text-center text-black">
+          <div class="col-md-3">
+            <div class="well desc-box-pink">
+              <h4>1. 募集をさがす</h4>
+              <br><br>
+              <p>　投稿一覧から、自分の悩みを解決してくれそうな人を探します。</p>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="well desc-box-pink">
+              <h4>2. 依頼をおくる</h4>
+              <br><br>
+              <p>　投稿の詳細画面から、投稿主へと依頼内容を送ります。</p>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="well desc-box-pink">
+              <h4>3. チャット開始</h4>
+              <br><br>
+              <p>　美容師からメッセージが届けば、それ以降は自由に会話できます。</p>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="well desc-box-pink">
+              <h4>4. 評価する</h4>
+              <br><br>
+              <p>　悩みが解決したら、依頼を完了して評価へと移ります。</p>
+            </div>
+          </div>
+        </div>
+
+      <% elsif logged_in_teacher? %> <!-- ティーチャーの場合 -->
+
+        <div class="row text-center text-black">
+          <div class="col-md-3">
+            <div class="well desc-box-cyan">
+              <h4>1. 投稿する</h4>
+              <br><br>
+              <p>　自分の得意分野、相談に乗れることなどを書いて依頼を募集します。</p>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="well desc-box-cyan">
+              <h4>2. 承認する</h4>
+              <br><br>
+              <p>　送られてきた依頼に対して、メッセージを返信します。</p>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="well desc-box-cyan">
+              <h4>3. チャット開始</h4>
+              <br><br>
+              <p>　依頼者とチャットで会話。相談に乗ります。</p>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="well desc-box-cyan">
+              <h4>4. 評価をまつ</h4>
+              <br><br>
+              <p>　依頼者の悩みが解決したら、あとは評価されるのを待つだけです。</p>
+            </div>
+          </div>
+        </div>
+
+      <% end %>
+
+    </div>
+  </div>
+</div>

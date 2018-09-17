@@ -1,0 +1,38 @@
+<div class="top-hero-wrapper-p">
+  <div class="bg-mask">
+    <div class="container content-container">
+      <div class="row">
+        <h1 class="text-center text-pink">プロフィール</h1>
+        <div class="col-md-offset-2 col-md-8" style="margin-bottom: 300px">
+
+          <div style="margin-top: 80px">
+
+            <div class="text-white"  style='float: left; padding-top: 50px'>
+              <%= image_tag @user.image.url, :size => '250x180' %>
+              <div style="width: 60px">
+                <% if logged_in_user? %>
+                  <%= link_to edit_user_path(id: current_user.id) do %>
+                    <p style='display: block' >編集する</p>
+                  <% end %>
+                <% end %>
+              </div>
+            </div>
+
+            <div class="text-white auto-br"  style='float: left; margin-left: 70px; width: 400px'>
+              <h2>名前</h2>
+              <div class="show-container">
+                <h3><%= @user.name %></h3>
+              </div>
+              <h2>自己紹介</h2>
+              <div class="show-container">
+                <h3><%= @user.introduce %></h3>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

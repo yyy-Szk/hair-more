@@ -1,0 +1,27 @@
+<div class="top-hero-wrapper">
+  <div class="bg-mask">
+    <div class="container content-container">
+      <div class="row">
+        <div class="col-md-offset-2 col-md-8">
+          <h1 class="text-center text-cyan">プロフィールの編集</h1>
+          <%= form_for @teacher do |f| %>
+            <div class="form-group">
+              <%= f.label :name, class: 'text-white' %>
+              <%= f.text_field :name, class: 'form-control' %>
+            </div>
+            <div class="form-group">
+              <%= f.label :introduce, class: 'text-white' %>
+              <%= f.text_field :introduce, class: 'form-control' %>
+            </div>
+            <div class="form-group text-white">
+              <%= f.label :image %>
+              <%= f.file_field :image %>
+            </div>
+
+            <%= f.submit "更新する", class: 'btn-block btn-white' %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

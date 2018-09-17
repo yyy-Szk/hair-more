@@ -1,0 +1,24 @@
+<div class="top-hero-wrapper">
+  <div class="bg-mask">
+    <div class="container content-container">
+      <div class="row">
+        <div class="col-md-offset-2 col-md-8">
+          <h1 class="text-center text-cyan">Log in</h1>
+          <%= form_for :session, url: teacher_login_path do |f| %>
+            <div class="form-group">
+              <%= f.label :email, class: 'text-white' %>
+              <%= f.text_field :email, class: 'form-control' %>
+            </div>
+            <div class="form-group">
+              <%= f.label :password, class: 'text-white' %>
+              <%= f.password_field :password, class: 'form-control' %>
+            </div>
+
+            <%= f.submit "ログイン", class: 'btn-block btn-white' %>
+          <% end %>
+          <%= link_to '新規登録はこちら', new_teacher_path,class: 'text-white' %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

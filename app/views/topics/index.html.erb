@@ -1,0 +1,109 @@
+<% if @topics.count != 0 %> <!--  投稿がある場合 -->
+
+  <div class="top-hero-wrapper-p">
+    <div class="bg-mask">
+      <div class="container content-container">
+        <h1 class="text-white text-center" style='margin-bottom: 60px'>投稿一覧</h1>
+
+        <div class="row row-margin">
+
+          <% @topics.each do |topic| %>
+            <div class="col-md-3 text-white" style="margin: 0 auto">
+
+              <div class="card">
+    		  	    <%= link_to topic_path(id: topic.id) do %> <!-- topic/:id -->
+
+                  <div class="card-img-top"> <!-- 投稿のトップ画像 %> -->
+                    <%= image_tag topic.image.url, :size => '250x180' %>
+                  </div>
+
+    					    <div class="text-black auto-br card-body" style="height: 180px; ">
+    					    	<div class="text-center" style="margin-top: -35px;"> <!-- 投稿主の画像 -->
+                      <%= image_tag topic.teacher.image.url, :size => '70x70', class: 'img-circle' %>
+    							  </div>
+
+    						    <h3 class="text-center"><%= topic.name %></h3> <!-- 投稿主の名前 -->
+    						    <p class="card-text"><%= topic.description.truncate(58) %></p> <!-- 投稿の説明 -->
+                  </div>
+
+                <% end %> <!-- link_toのend -->
+
+								<div class="category-label text-black" style="background-color: #EBC5C9; height: 50px"> <!-- 評価の欄 -->
+                  <div class="text-left card-bottom-left"> <!-- カードボトムの左半分-->
+
+                    <div class='likes' style=""> <!-- いいね機能 -->
+                      <% if logged_in_user? %>
+                        <% if current_user.likes.find_by(topic_id: topic.id) %>
+
+                          <%= link_to unlike_path(topic_id: topic.id), method: 'delete' do %> <!-- いいね解除 -->
+                            <i class="fa fa-heart like-btn fa-lg"></i>
+                          <% end %>
+
+                        <% else %>
+
+                          <%= link_to likes_path(topic_id: topic.id), method: 'post' do %> <!-- いいねする -->
+                            <i class="far fa-heart like-btn fa-lg"></i>
+                          <% end %>
+
+                        <% end %>
+                      <% end %>
+                    </div>
+
+                  </div>
+
+									<div class="text-right card-bottom-right"> <!-- カードボトムの右半分 -->
+                    <div class="value">
+										  <span class='value-content'>評価</span>
+                      <br>
+
+									  	<div class="raty-marks">
+                        <div id="star_rank_<%= topic.id %>"></div>
+
+                          <script type="text/javascript">
+                            $(function(){
+                              $('#star_rank_<%= topic.id %>').raty({
+                                half     : true,
+                                size     : 24,
+                                starHalf : '/assets/star-half.png',
+                                starOff  : '/assets/star-off.png',
+                                starOn   : '/assets/star-on.png',
+                                score    : <%= Review.where(teacher_id: topic.teacher.id).average(:star) %>,
+                                readOnly:    true
+                              });
+                            });
+                          </script>
+
+                      </div>
+
+                    </div> <!-- value -->
+									</div> <!-- text-right -->
+
+								</div> <!-- category-label -->
+    			  	</div> <!-- card -->
+            </div> <!-- col -->
+
+          <% end %> <!-- eachのend -->
+        </div> <!--row -->
+
+      </div> <!-- container -->
+    </div> <!-- mask -->
+  </div> <!-- wrapper -->
+
+<% else %> <!-- 投稿がない場合 -->
+
+  <div class="top-hero-wrapper">
+    <div class="bg-mask">
+      <div class="container content-container">
+        <h1 class="text-white text-center">投稿一覧</h1>
+
+        <div class="row">
+          <div class="col-md-12 text-center text-white">
+            <h1 class="emp-content">現在投稿はありません</h1>
+          </div>
+        </div> <!--row -->
+
+      </div> <!-- container -->
+    </div> <!-- mask -->
+  </div> <!-- wrapper -->
+
+<% end %><!--ifのend -->

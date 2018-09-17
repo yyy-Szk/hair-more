@@ -1,0 +1,42 @@
+<div class="top-hero-wrapper">
+  <div class="bg-mask">
+    <div class="container content-container">
+      <div class="row">
+        <div class="col-md-offset-2 col-md-8">
+
+          <h1 class="text-center text-cyan">評価フォーム</h1>
+          <p class="text-white">評価：</p><div id="star_rank"></div>
+          <%= form_for @review do |f| %>
+            <%= f.hidden_field :user_id,value: current_user.id %>
+            <%= f.hidden_field :teacher_id,value: @teacher.id  %>
+            <%= f.hidden_field :star,id: 'star' %>
+            <%= f.text_area :content, :size=>"100x10" %>
+            <%= f.submit '評価する',class: "btn btn-primary" %>
+          <% end %>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script type="text/javascript">
+  <!--
+  $(function(){
+    $('#star_rank').raty({
+      half     : false,
+      size     : 24,
+      starOff  : '/assets/star-off.png',
+      starOn   : '/assets/star-on.png',
+      scoreName    : 'review[star]' ,
+      targetType: 'number',
+      targetKeep: true,
+
+    click: function(score, evt) {
+//	      alert('ID: ' + $(this).attr('id') + "\nscore: " + score + "\nevent: " + evt); //選択時に要素をアラート
+      $("#star").val(score);
+    }
+  });
+  });
+  //-->
+  </script>

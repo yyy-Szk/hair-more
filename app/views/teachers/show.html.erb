@@ -1,0 +1,82 @@
+<div class="top-hero-wrapper-p">
+  <div class="bg-mask">
+    <div class="container content-container">
+      <div class="row">
+        <h1 class="text-center text-cyan">プロフィール</h1>
+        <div class="col-md-offset-2 col-md-8" style="margin-bottom: 100px">
+
+          <div style="margin-top: 80px">
+            <div class="text-white"  style='float: left; padding-top: 50px'>
+              <%= image_tag @teacher.image.url, :size => '250x180' %>
+
+              <% if logged_in_teacher? %>
+                <div style="width: 60px">
+                  <%= link_to edit_teacher_path(id: current_teacher.id) do %>
+                    <p style='display: block'>編集する</p>
+                  <% end %>
+                </div>
+              <% end %>
+
+            </div>
+
+            <div class="text-white auto-br"  style='float: left; margin-left: 70px; width: 400px'>
+              <h2>名前</h2>
+              <div class="show-container">
+                <h3><%= @teacher.name %></h3>
+              </div>
+              <h2>自己紹介</h2>
+              <div class="show-container">
+                <h3><%= @teacher.introduce %></h3>
+              </div>
+              <% if logged_in_teacher? %>
+                <h2>募集状況</h2>
+                <% if Topic.find_by(teacher_id: current_teacher.id).nil? %>
+                  <div class="show-container">
+                    <h3>現在募集は投稿していません</h3>
+                    <h3>→→→ <%= link_to new_topic_path do%>投稿する<% end %></h3>
+                  </div>
+                <% else %>
+                  <div class="show-container">
+                    <h3>現在<%= Requet.where(topic_id: @teacher.topics).count %>件の依頼が来ています</h3>
+                    <h3>→→→ <%= link_to requets_path do%>依頼を確認する<% end %></h3>
+                  </div>
+                <% end %>
+              <% end %>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+
+      <div class="row" style="margin-bottom: 200px">
+        <h1 class="text-center text-cyan">レビュー一覧</h1>
+
+        <% @reviews.each do |review| %>
+          <div class="col-md-offset-2 col-md-10 auto-br text-white" style="margin-top: 50px">
+
+            <h2>名前 : <%= review.user.name %></h2>
+            <div id="star_rank_<%= @teacher.id %>" style="padding-left: 10px;"></div> <!-- 評価の数字 -->
+            <h2>ひとこと : <%= review.content %></h2>
+
+            <script type="text/javascript">
+              $(function(){
+                $('#star_rank_<%= @teacher.id %>').raty({
+                  half     : true,
+                  size     : 40,
+                  starHalf : '/assets/star-half.png',
+                  starOff  : '/assets/star-off.png',
+                  starOn   : '/assets/star-on.png',
+                  score    : <%= Review.where(teacher_id: @teacher.id).average(:star) %>,
+                  readOnly:    true
+                });
+              });
+            </script>
+
+          </div>
+        <% end %>
+
+      </div>
+    </div>
+  </div>
+</div>
