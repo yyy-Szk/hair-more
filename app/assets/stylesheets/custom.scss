@@ -26,6 +26,7 @@
   height: 100%;
   background: rgba(0,0,0,0.6);
   background-attachment: fixed;
+  overflow: scroll;
 }
 
 .top-hero-wrapper {
@@ -37,17 +38,7 @@
   background-attachment: fixed;
   background-size: cover;
   background-color: #464646;
-}
-
-.top-hero-wrapper-p {
-  width: 100%;
-  height: 100%;
-  background: image-url('back.jpg');
-  background-position: center;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  background-size: cover;
-  background-color: #464646;
+  overflow: scroll;
 }
 
 .bg-white {

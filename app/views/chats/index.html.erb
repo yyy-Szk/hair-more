@@ -1,11 +1,11 @@
 <% if @rooms.count != 0 %> <!-- 会話中の人がいるがいるなら -->
 
-  <div class="top-hero-wrapper-p">
+  <div class="top-hero-wrapper">
     <div class="bg-mask">
       <div class="container content-container">
         <h1 class="text-white text-center">チャットルーム一覧</h1>
 
-        <div class="row text-white" style="margin-bottom:480px">
+        <div class="row text-white">
 
           <% @rooms.each do |room| %>
             <div class="col-md-offset-2 col-md-10 auto-br" style="margin-top: 50px">
@@ -22,7 +22,9 @@
                   var element = document.getElementsByClassName("notice-circle");
 
                   for (var i=0;i<element.length;i++) {
+
                     if (<%= room.messages.where(sender_id: room.teacher.id, teacher: true).last.read %> == false ) {
+
                       element[i].style.display = "block";
                     } else {
                       element[i].style.display = "none";
@@ -41,11 +43,16 @@
                 <script>
                   var element = document.getElementsByClassName("notice-circle");
                   for (var i=0;i<element.length;i++) {
-                    if (<%= room.messages.where(sender_id: room.user.id, teacher: false).last.read %> == false ) {
-                      element[i].style.display = "block";
-                    // } else {
-                    //   element[i].style.display = "none";
-                    }
+                    <% begin %>
+                      if (<%= room.messages.where(sender_id: room.user.id, teacher: false).last.read %> == false ) {
+                        element[i].style.display = "block";
+                      // } else {
+                      //   element[i].style.display = "none";
+                      }
+                    <% rescue => e %>
+
+                    <% end %>
+
                   }
                 </script>
 
