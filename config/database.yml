@@ -49,4 +49,4 @@ test:
 #     url: <%= ENV['DATABASE_URL'] %>
 #
 production:
-  database: postgres
+ url: <%= ENV['DATABASE_URL'] %>
