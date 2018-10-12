@@ -22,7 +22,7 @@ WebsocketRails.setup do |config|
   # * Requires Redis.
   config.synchronize = false
 
-  config.redis_options = {:host => 'localhost', :port => '6379'}
+  config.redis_options = {:host => ’spinyfin.redistogo.com’, :port => ’10946’, :user => 'redistogo', :password => ’679a522fd88771d70d6fc53a29f0b3fド’}
 
   # Prevent Thin from daemonizing (default is true)
   # config.daemonize = false

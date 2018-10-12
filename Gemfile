@@ -23,8 +23,8 @@ gem 'turbolinks', '~> 5'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.5'
 # Use Redis adapter to run Action Cable in production
-gem 'redis', '~> 4.0'
-gem 'redis-rails'
+# gem 'redis', '~> 4.0'
+# gem 'redis-rails'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
@@ -40,7 +40,7 @@ gem 'jquery-rails'
 gem "carrierwave"
 gem 'rmagick'
 gem 'rails-i18n'
-gem 'websocket-rails', github: 'moaa/websocket-rails', branch: 'sync_fixes'
+# gem 'websocket-rails', github: 'moaa/websocket-rails', branch: 'sync_fixes'
 gem 'faye-websocket', '0.10.0'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
