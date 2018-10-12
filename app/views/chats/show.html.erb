@@ -10,7 +10,7 @@
             <%= render @messages %>
           </div>
 
-          <form style='text-align: center; font-size: 20px; margin-top: 60px'>
+          <form style='text-align: center; font-size: 20px; margin-top: 60px; margin-bottom: 80px'>
             <label class="text-white">発言する:</label><br>
             <input type="text" data-behavior="chat_speaker">
             <input type="hidden" data-behavior="chat_room" value='<%= params[:id] %>'>

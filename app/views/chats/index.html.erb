@@ -21,16 +21,23 @@
                 <script>
                   var element = document.getElementsByClassName("notice-circle");
 
+
                   for (var i=0;i<element.length;i++) {
 
-                    if (<%= room.messages.where(sender_id: room.teacher.id, teacher: true).last.read %> == false ) {
+                    <% begin %>
+                      if (<%= room.messages.where(sender_id: room.teacher.id, teacher: true).last.read %> == false ) {
 
-                      element[i].style.display = "block";
-                    } else {
-                      element[i].style.display = "none";
-                    }
+                        element[i].style.display = "block";
+                      } else {
+                        element[i].style.display = "none";
+                      }
+
+                    <% rescue => e %>
+
+                    <% end %>
                   }
                 </script>
+
 
               <% elsif logged_in_teacher? %>
 
@@ -42,19 +49,26 @@
 
                 <script>
                   var element = document.getElementsByClassName("notice-circle");
+
+
                   for (var i=0;i<element.length;i++) {
+
                     <% begin %>
-                      if (<%= room.messages.where(sender_id: room.user.id, teacher: false).last.read %> == false ) {
+                      if (<%= room.messages.where(sender_id: room.teacher.id, teacher: false).last.read %> == false ) {
+
                         element[i].style.display = "block";
-                      // } else {
-                      //   element[i].style.display = "none";
+                      } else {
+                        element[i].style.display = "none";
                       }
+
                     <% rescue => e %>
 
                     <% end %>
-
                   }
                 </script>
+
+
+
 
               <% end %>
 
