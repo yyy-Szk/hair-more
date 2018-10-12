@@ -49,6 +49,6 @@ test:
 #
 production:
   <<: *default
-  database: hair-more_production
-  username: hair-more
-  password: <%= ENV['HAIR-MORE_DATABASE_PASSWORD'] %>
+  database: postgres
+  username:
+  password: 
