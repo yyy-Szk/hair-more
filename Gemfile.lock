@@ -1,3 +1,19 @@
+GIT
+  remote: https://github.com/moaa/websocket-rails.git
+  revision: cf5d59b671c5b72caa7d3de91444063152ac6bb1
+  branch: sync_fixes
+  specs:
+    websocket-rails (0.7.0)
+      connection_pool
+      em-synchrony
+      faye-websocket
+      hiredis
+      rack
+      rails
+      redis
+      redis-objects
+      thin
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -85,6 +101,7 @@ GEM
       execjs
     coffee-script-source (1.12.2)
     concurrent-ruby (1.0.5)
+    connection_pool (2.2.2)
     crass (1.0.4)
     daemons (1.2.6)
     debug_inspector (0.0.3)
@@ -244,15 +261,6 @@ GEM
     websocket-driver (0.7.0)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.3)
-    websocket-rails (0.7.0)
-      em-synchrony
-      faye-websocket
-      hiredis
-      rack
-      rails
-      redis
-      redis-objects
-      thin
     xpath (3.1.0)
       nokogiri (~> 1.8)
     yard (0.9.16)
@@ -293,7 +301,7 @@ DEPENDENCIES
   tzinfo-data
   uglifier (>= 1.3.0)
   web-console (>= 3.3.0)
-  websocket-rails
+  websocket-rails!
 
 RUBY VERSION
    ruby 2.4.1p111

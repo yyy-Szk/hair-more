@@ -39,7 +39,7 @@ gem 'jquery-rails'
 gem "carrierwave"
 gem 'rmagick'
 gem 'rails-i18n'
-gem 'websocket-rails'
+gem 'websocket-rails', github: 'moaa/websocket-rails', branch: 'sync_fixes'
 gem 'faye-websocket', '0.10.0'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
