@@ -1,24 +1,12 @@
-# README
+# 基本的な使い方
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+①美容師、またはユーザーとして登録する
+②美容師であれば投稿を、ユーザーであれば投稿に応募をする
+③マッチングすれば会話が開始する
 
-Things you may want to cover:
+# 初期ユーザー
 
-* Ruby version
+美容師、ユーザーともに
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+email：saisaityotyottyo@gmail.com
+password：12345678
